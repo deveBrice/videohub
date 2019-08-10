@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('css/profile.css')}}">
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+{% block nav %}
+{% include "pages/header/header.html.twig" %}
+{% endblock nav %}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}} ) }}
+{% if form is defined %}
+{% form_theme form "pages/home/home.html.twig" %}
+<div class="block-profile">
+        <div class="row">
+          <div class="col-md-4">
+        <div class="form-group"> {{ form_row(form.lastname, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.firstname, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.birthday, {'attr': {'class': 'select'}}) }}</div>
+        <div class="form-group">{{ form_row(form.newsletter, {'attr': {'class': 'checkbox'}}) }}</div>
+        <div class="form-group">{{ form_row(form.submit) }}</div>
+         </div>
+       </div>
+    </div>
+{% endif %}
+{{ form_end(form) }}
+{% endblock %}

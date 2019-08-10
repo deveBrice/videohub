@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('css/login.css')}}">
+{% endblock %}
+{% block title %}Hello !{% endblock %}
+
+{% block body %}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}} ) }}
+<div class="block-register">
+    <div class="container">
+        <div class="form-group"> {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.password.first, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.password.second, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.firstname, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.lastname, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.birthday, {'attr': {'class': 'custom-select'}}) }}</div>
+        <div class="form-group">{{ form_row(form.newsletter, {'attr': {'class': 'form-check-input'}}) }}</div>
+        <div class="form-group">{{ form_row(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}</div>
+    </div>
+</div>
+{{ form_end(form) }}
+{% endblock %}

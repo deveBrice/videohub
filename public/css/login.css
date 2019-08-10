@@ -1,0 +1,22 @@
+
+
+
+.block-login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group input {
+    padding: 0 15px;
+    width: 100%;
+    text-align: left;
+    border-radius: 0px;
+}
+
+.registerUser a {
+    text-align: center;
+}
+

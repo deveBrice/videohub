@@ -1,0 +1,13 @@
+.form-group input {
+    padding: 0 15px;
+    width: 100%;
+    text-align: left;
+    border-radius: 0px;
+}
+
+.block-register {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

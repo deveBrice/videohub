@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('css/login.css')}}">
+{% endblock %}
+{% block title %}Hello !{% endblock %}
+
+{% block body %}
+{% block nav %}
+{% include "pages/header/header.html.twig" %}
+{% endblock nav %}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}} ) }}
+<div class="block-login">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+        <div class="form-group"> {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.password, {'attr': {'class': 'form-control'}}) }}</div>
+        <div class="form-group">{{ form_row(form.submit) }}</div>
+        <div class="registerUser">
+           <a href="/registerUser">Pas encore inscrit?</a>
+       </div>
+         </div>
+       </div>
+    </div>
+</div>
+
+{{ form_end(form) }}
+
+{% endblock %}

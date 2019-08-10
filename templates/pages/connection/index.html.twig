@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+{% endblock %}
+{% block body %}
+
+{% block nav %}
+   {% include "header.html.twig" %}
+{% endblock nav %}
+
+{% block user_content %}
+<div class="loginForm">
+  		<ul  class="nav nav-pills">
+				<li>
+					<a href="#1a" data-toggle="tab">New user</a>
+				</li>
+				<li class="active"><a href="#2a" data-toggle="tab">User existant</a>
+				</li>
+			</ul>
+	
+    <div class="tab-content clearfix">
+	  <div class="tab-pane" id="1a">
+	     {% include 'pages/register/register_content.html.twig' %} 
+	 </div>
+		<div class="tab-pane active" id="2a">
+          {% include 'pages/security/login.html.twig' %}
+		</div>
+	</div>
+<div>
+{% endblock user_content %}
+{% endblock body %}
