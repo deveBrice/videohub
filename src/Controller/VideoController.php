@@ -11,6 +11,8 @@ use App\Form\VideoType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\EditType;
+use App\Repository\UserRepository;
+use App\Form\UserType;
 
 class VideoController extends AbstractController
 {
@@ -35,19 +37,24 @@ class VideoController extends AbstractController
     }
 
     /**
-     * @Route("/", name="home")
+     * @Route("/video", name="video")
      */
-    public function index()
+    public function index(UserRepository $userRepository)
     {
         $videoRepository = $this->getDoctrine()->getManager()->getRepository(Video::class);
-
-        $videoRepository->findBy(['published' => true]);
-
-        return $this->render('pages/home/home.html.twig', [
+        
+        
+        $videoRepository->findBy(['published' => 1]);
+        
+        return $this->render('pages/video/video.html.twig', [
             'videosPublished' => $videoRepository->findBy(['published' => true]),
             'videosNotPublished' => $videoRepository->findBy(['published' => false]),
+           
         ]);
     }
+
+    
+
 
      /**
      * @Route("/editedVideo/{id}", name="edited_video")
@@ -63,7 +70,7 @@ class VideoController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($video);
         $entityManager->flush();
-        return $this->redirectToRoute('home');   
+        return $this->redirectToRoute('video');   
       }
       return $this->render('pages/editedVideo/editedVideo.html.twig', [
         'form' => $form->createView()   
@@ -73,7 +80,7 @@ class VideoController extends AbstractController
   
 
     /**
-     * @Route("/removedVideo/{id}", name="video_removed", methods="DELETE")
+     * @Route("/removedVideo/{id}", name="video_removed")
      * @ParamConverter("id", options={"mapping"={"id"="id"}})
      */
     public function remove(User $user, Video $video, EntityManagerInterface $entityManager)

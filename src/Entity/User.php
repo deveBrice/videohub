@@ -52,7 +52,7 @@ class User implements UserInterface
     private $birthday;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $newsletter;
 
@@ -69,6 +69,13 @@ class User implements UserInterface
     public function __construct()
     {
      $this->roles = array('ROLE_USER');
+     $roles[] = 'ROLE_USER';
+
+    return array_unique($roles);
+     $this->roles = array('ROLE_ADMIN');
+     $roles[] = 'ROLE_ADMIN';
+
+    return array_unique($roles);
      $this->videos = new ArrayCollection();
     }
 

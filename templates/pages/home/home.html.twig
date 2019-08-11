@@ -13,26 +13,6 @@
 {% endblock nav %}
 {% if is_granted('IS_AUTHENTICATED_FULLY') %} 
 <p>Welcome {{ app.user.lastname }}</p>
-        <h1>Video Published</h1>
-<ul>
-    {% for video in videosPublished %}
-        <li>Title : {{ video.title }}</li>
-        <li>Category : {{ video.selected_category }}</li>
-         <a href="/editedVideo/{{video.id}}" class="btn btn-secondary">Edit</a>
-         <a href="{{ path('video_removed', {'id': video.id}) }}" class="btn btn-danger">Delete</a>
-    {% endfor %}
-</ul>
-
-<ul>
-    {% for video in videosNotPublished %}
-        <li>Title : {{ video.title }}</li>
-        <li>Category : {{ video.selected_category }}</li>
-        <a href="/editedVideo/{{video.id}}" class="btn btn-secondary">Edit</a>
-        <a href="{{ path('video_removed', {'id': video.id}) }}" class="btn btn-danger">Delete</a>
-    {% endfor %}
-</ul>
-
-
 {% else %}   
 <p>Welcome Anonymous</p>
 {% endif %}

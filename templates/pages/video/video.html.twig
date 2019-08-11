@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+{{ parent() }}
+
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+{% block nav %}
+{% include "pages/header/header.html.twig" %}
+{% endblock nav %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %} 
+<p>Welcome {{ app.user.lastname }}</p>
+
+<div class="containerVideoNotPublished">
+    <div class="titleVideoNotPublished">
+            <h1>Video non publié</h1>
+    </div>
+    <div class="videoNotPublished">
+        <ul>
+            {% for video in videosPublished %}
+                <li>Titre : {{ video.title }}</li>
+                <li>Categorie : {{ video.selected_category }}</li>
+                <a href="{{ path('edited_video', {'id': video.id}) }}" class="btn btn-secondary">Edit</a>
+                <a href="{{ path('video_removed', {'id': video.id}) }}" class="btn btn-danger">Delete</a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="containerVideoPublished">
+    <div class="titleVideoPublished">
+        <h2>Video Publié</h2>
+    </div>
+    <div class="videoPublished">
+        <ul>
+            
+            {% for video in videosNotPublished %}
+                <li>Titre : {{ video.title }}</li>
+                <li>Categorie : {{ video.selected_category }}</li>
+                <a href="{{ path('edited_video', {'id': video.id}) }}" class="btn btn-secondary">Edit</a>
+                <a href="{{ path('video_removed', {'id': video.id}) }}" class="btn btn-danger">Delete</a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div>
+</div>
+{% endif %}
+
+{% endblock %}
